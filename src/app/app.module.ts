@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AddItemsComponent } from './add-items/add-items.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     LoginComponent,
     RegisterComponent,
     PageNotFoundComponent,
-    HomePageComponent
+    HomePageComponent,
+    AddItemsComponent
   ],
   imports: [
     BrowserModule,

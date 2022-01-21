@@ -1,7 +1,56 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Home</a>
+    <a class="navbar-brand" routerLinkActive="active" (click)="onHomeClick()" style="cursor: pointer;">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <button class="btn btn-success btn-lg float-right" type="submit">Submit</button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLinkActive="active" (click)="onShoppingClick()" style="cursor: pointer;">Shopping List <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+      </form>
+    </div>
   </nav>
+
+    <div>
+      <h2 style="text-align: center;">{{title}}</h2>
+    </div>
+  <!-- cards for general todo list -->
+  <div *ngIf="isGeneralActive">
+    <div class="row">
+        <div class="cards col" *ngFor="let x of itemsList">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{x.title}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{x.priority}}</h6>
+                  <p class="card-text">{{x.description}}</p>
+                  <a href="#" class="card-link">Delete</a>
+                  <a href="#" class="card-link">Mark as Done</a>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div *ngIf="!isGeneralActive">
+    <div class="row">
+        <div class="cards col" *ngFor="let x of shoppingList">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{x.title}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{x.priority}}</h6>
+                  <p class="card-text">{{x.description}}</p>
+                  <a href="#" class="card-link">Delete</a>
+                  <a href="#" class="card-link">Mark as Done</a>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+  <button routerLink="/addItems" class="fixedBtn btnHover">+</button>

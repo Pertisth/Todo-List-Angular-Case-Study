@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FormControl,FormGroup } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Users } from '../Users/users';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-register',
@@ -17,10 +20,15 @@ export class RegisterComponent implements OnInit {
   });
 
   onSubmit(){
-    console.log(this.registerForm.value);
+
+    this.auth.username = this.registerForm.value.username;
+    this.auth.email = this.registerForm.value.email;
+    this.auth.password = this.registerForm.value.password;
+    
+    
   }
 
-  constructor() { }
+  constructor(private auth : AuthService ) { }
 
   ngOnInit(): void {
   }
