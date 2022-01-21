@@ -1,0 +1,31 @@
+<div class="body-content">
+    <img src="/assets/bajajLogo.jpg" class="center" alt="bajajLogo" width="250px" height="200px">
+    <div class="container">
+        <div class="login-form" (ngSubmit)="onSubmit()">
+            <form [formGroup]="registerForm" >
+                <h2>Registration</h2>
+                <div class="form-item">
+                    <!-- <fa-icon [icon]="faEnvelope" class="emailIcon"></fa-icon> -->
+                    <input formControlName="username" type="text" name="userName" id="userName" placeholder="Username">
+                </div>
+                
+                <div class="form-item">
+                    <input formControlName="email" type="email" name="userName" id="email" placeholder="Email">
+                </div>
+
+                <div class="form-item">
+                    <input formControlName="password" type="password" name="passWord" id="passWord" placeholder="Password">
+                </div>
+
+                <div class="form-btns">
+                    <button class="loginBtn" (click)="onSubmit()">Register</button>
+                    <div class="options">
+                        <a routerLink="/login">Login ?</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

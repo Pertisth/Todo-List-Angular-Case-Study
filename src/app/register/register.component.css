@@ -1,0 +1,111 @@
+html {
+    background: #6696cc;
+}
+
+.body-content {
+    padding-top: 20vh;
+}
+
+.container {
+    width: 350px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border: 2px solid White;
+    border-radius: 15px;
+    background: white;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item {
+    margin: 5px;
+    padding-bottom: 10px;
+    display: flex;
+}
+
+.form-item label {
+    display: block;
+    padding: 2px;
+    font-size: 20px;
+    width: 100px;
+}
+
+.form-item input {
+    width: 320px;
+    height: 35px;
+    border: 2px solid #e1dede69;
+    border-radius: 20px;
+    background: #e1dede69;
+    color: grey;
+    text-align: center;
+}
+
+.form-btns {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 10px 0;
+}
+
+.loginBtn{
+    margin: auto;
+    font-size: 20px;
+    padding: 5px 15px;
+    border: 2px solid;
+    border-radius: 15px;
+    color: white;
+    background: #178cc6;
+    width: 250px;
+    cursor: pointer;
+}
+
+.options {
+    padding-top: 15px;
+    margin: auto;
+}
+
+.options a {
+    text-decoration: none;
+    color: black;
+    margin: 0 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+
+}
+.options a:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+input::placeholder{
+    text-align: center;
+}
+
+img{
+    text-align: center;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+  }
+
+  .loginBtn :hover{
+      background-color: green;
+  }
+
+  h2{
+      margin-top: 50px ;
+      text-align: center;
+  }
+

@@ -1,0 +1,27 @@
+
+<div class="body-content">
+    <img src="/assets/bajajLogo.jpg" class="center" alt="bajajLogo" width="250px" height="200px">
+    <div class="container">
+        <div class="login-form">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <h2>Login</h2>
+                <div class="form-item">
+                    <input formControlName="username" type="text" name="userName" id="userName" placeholder="Username">
+                </div>
+
+                <div class="form-item">
+                    <input formControlName="password" type="password" name="passWord" id="passWord" placeholder="Password">
+                </div>
+
+                <div class="form-btns">
+                    <input type="button" value="Login" class="loginBtn" (click)="onSubmit()">
+                    <div class="options">
+                        <a routerLink="/register">Register ?</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
