@@ -12,20 +12,22 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class RegisterComponent implements OnInit {
 
-  // faEnvelope = faEnvelope;
   registerForm = new FormGroup({
     username : new FormControl(),
     email : new FormControl(),
     password : new FormControl()
   });
 
+  
+
   onSubmit(){
 
-    this.auth.username = this.registerForm.value.username;
-    this.auth.email = this.registerForm.value.email;
-    this.auth.password = this.registerForm.value.password;
-    
-    
+    this.auth.userObj.email = this.registerForm.value.email;
+    this.auth.userObj.name = this.registerForm.value.username;
+    this.auth.userObj.password = this.registerForm.value.password;
+
+    this.auth.setData();
+    console.log(this.auth.userObj);
   }
 
   constructor(private auth : AuthService ) { }

@@ -1,43 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { Items } from '../Items/items';
+import { Users } from '../Users/users';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
+  isGeneralActive: boolean = true;
+  title: string = 'General List';
 
-  isGeneralActive : boolean = true;
-  title : string = "General List";
-  
-  itemObj1 : Items = new Items("Pertisth","High","Hello Every One"); 
-  itemObj2 : Items = new Items("Suprith","Medium","Hello Suprith");
-  itemObj3 : Items = new Items("Suprith","Medium","Hello Suprith");
-  itemObj4 : Items = new Items("Suprith","Medium","Hello Suprith");
-  itemObj5 : Items = new Items("Suprith","Medium","Hello Suprith");
-  itemObj6 : Items = new Items("Suprith","Medium","Hello Suprith");
-  itemsList : Items[] = [this.itemObj1,this.itemObj2,this.itemObj3,this.itemObj4,this.itemObj5,this.itemObj6];
+  // general itemList
+
+  emptyItem : Items = new Items("Add Title","Low","Add Description");
+  itemsList : Items[] = [];
+  itemsListTemp: Items[] = [this.emptyItem];
 
   // shopping itemList
-   shopObj1 : Items = new Items("Pertisth","High","Hello Every One");
-   shopObj2 : Items = new Items("Pertisth","High","Hello Every One");
-   shopObj3 : Items = new Items("Pertisth","High","Hello Every One");
-   shopObj4 : Items = new Items("Pertisth","High","Hello Every One");
-   shopObj5 : Items = new Items("Pertisth","High","Hello Every One");
-   shoppingList : Items[] = [this.shopObj1,this.shopObj2,this.shopObj3,this.shopObj4,this.shopObj5];
+  shoppingList : Items[] = [];
+  shoppingListTemp : Items[]= [this.emptyItem];
 
-   onShoppingClick(){
-     this.title = "Shopping List";
-     this.isGeneralActive = false;
-   }
-   onHomeClick(){
-     this.title = "General List";
-     this.isGeneralActive = true;
-   }
-  constructor() { }
 
-  ngOnInit(): void {
+  onShoppingClick() {
+    this.title = 'Shopping List';
+    this.isGeneralActive = false;
+  }
+  onHomeClick() {
+    this.title = 'General List';
+    this.isGeneralActive = true;
+  }
+  constructor() {
+    let userObj = JSON.parse(localStorage.getItem("currUser") as string);
+    if(userObj !== null)
+    {
+      // let n : number = userObj.generalTodoList.length;
+      this.itemsList = userObj.generalTodoList;
+      this.shoppingList = userObj.shoppingList;
+
+      // if(this.itemsList.length === 0)
+      // {
+      //   this.itemsList = this.itemsListTemp;
+      // }
+      // if(this.shoppingList.length === 0)
+      // {
+      //   this.shoppingList = this.shoppingListTemp;
+      // }
+
+    }
   }
 
+  ngOnInit(): void {}
 }

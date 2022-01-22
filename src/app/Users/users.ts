@@ -9,10 +9,10 @@ export class Users {
     generalTodoList : Items[] = [];
     shoppingTodoList : Items[] = [];
 
-    public constructor(name : string,email:string,password:string){
-        this.name = name
-        this.email = email;
-        this.password = password;
+    public constructor(){
+        this.name = "";
+        this.email = "";
+        this.password = "";
     }
     
 

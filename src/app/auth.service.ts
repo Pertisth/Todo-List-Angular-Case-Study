@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Items } from './Items/items';
 import { Users } from './Users/users';
 
 @Injectable({
@@ -6,11 +7,23 @@ import { Users } from './Users/users';
 })
 export class AuthService {
 
-  username : string = "";
-  email : string = "";
-  password : string = "";
 
-  currUser : Users = new Users(this.username,this.email,this.password);
+  currUser : Users[] = [];
 
-  constructor() { }
+  item : Items[] = []; 
+
+  userObj = new Users();
+  
+  setData(){
+    const userData = JSON.stringify(this.userObj);
+    localStorage.setItem(this.userObj.name,userData);
+
+  }
+  getData(username:string){
+    return localStorage.getItem(username);
+  }
+
+  constructor() { 
+
+  }
 }
