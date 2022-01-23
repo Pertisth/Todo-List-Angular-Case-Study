@@ -21,3 +21,7 @@
     height: 55px;
     transform: scale(1.1);
 }
+
+.strikethrough {
+    text-decoration: line-through;
+  }

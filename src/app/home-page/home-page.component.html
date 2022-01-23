@@ -32,8 +32,8 @@
                   <h5 class="card-title">{{x.title}}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">{{x.priority}}</h6>
                   <p class="card-text">{{x.description}}</p>
-                  <a href="#" class="card-link">Delete</a>
-                  <a href="#" class="card-link">Mark as Done</a>
+                  <a class="card-link" (click)="onDeleteGen(x)" style="cursor :pointer">Delete</a>
+                  <a class="card-link" (click)="markAsDoneGen(x)" style="cursor :pointer">Mark as Done</a>
                 </div>
               </div>
           </div>
@@ -48,8 +48,8 @@
                   <h5 class="card-title">{{x.title}}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">{{x.priority}}</h6>
                   <p class="card-text">{{x.description}}</p>
-                  <a href="#" class="card-link">Delete</a>
-                  <a href="#" class="card-link">Mark as Done</a>
+                  <a class="card-link" (click)="onDeleteShop(x)" style="cursor: pointer;">Delete</a>
+                  <a class="card-link" style="cursor: pointer;">Mark as Done</a>
                 </div>
               </div>
           </div>

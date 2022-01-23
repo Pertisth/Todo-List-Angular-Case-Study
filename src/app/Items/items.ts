@@ -4,11 +4,11 @@ export class Items {
     priority : string;
     description : string;
 
-    constructor(title:string,priority:string,desc:string)
+    constructor(title:string,priority:string,description:string)
     {
         this.title = title;
         this.priority = priority;
-        this.description = desc;
+        this.description = description;
     }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Items } from '../Items/items';
 
 @Component({
   selector: 'app-add-items',
@@ -47,13 +48,15 @@ export class AddItemsComponent implements OnInit {
     }
 
     if(category === "1"){
-      currUser.generalTodoList.push({title,desc,priority});
+      let items : Items = new Items(title,priority,desc);
+      currUser.generalTodoList.push(items);
       let user = JSON.stringify(currUser);
       localStorage.setItem(currUserName,user);
       localStorage.setItem("currUser",user);
     }
     else{
-      currUser.shoppingTodoList.push({title,priority,desc});
+      let items : Items = new Items(title,priority,desc);
+      currUser.shoppingTodoList.push(items);
       let user = JSON.stringify(currUser);
       localStorage.setItem(currUserName,user);
       localStorage.setItem("currUser",user);
