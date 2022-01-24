@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { Items } from '../Items/items';
 import { Users } from '../Users/users';
 
@@ -15,11 +17,11 @@ export class HomePageComponent implements OnInit {
 
   emptyItem : Items = new Items("Add Title","Low","Add Description");
   itemsList : Items[] = [];
-  // itemsListTemp: Items[] = [this.emptyItem];
+  itemsListTemp: Items[] = [this.emptyItem];
 
   // shopping itemList
   shoppingList : Items[] = [];
-  // shoppingListTemp : Items[]= [this.emptyItem];
+  shoppingListTemp : Items[]= [this.emptyItem];
 
   
 
@@ -31,11 +33,11 @@ export class HomePageComponent implements OnInit {
     this.title = 'General List';
     this.isGeneralActive = true;
   }
-  constructor() {
+  constructor(private auth : AuthService,private router : Router) {
     let userObj = JSON.parse(localStorage.getItem("currUser") as string);
     if(userObj !== null)
     {
-      // let n : number = userObj.generalTodoList.length;
+      // general Item sort
       this.itemsList = userObj.generalTodoList;
       this.itemsList = this.itemsList.sort((a,b)=>{
         if(a.priority === "Low")
@@ -56,6 +58,8 @@ export class HomePageComponent implements OnInit {
           return -1;
         }
       });
+
+      // shopping list sort
       this.shoppingList = userObj.shoppingTodoList;
       this.shoppingList = this.shoppingList.sort((a,b)=>{
         if(a.priority === "Low")
@@ -76,7 +80,6 @@ export class HomePageComponent implements OnInit {
           return -1;
         }
       });
-      console.log(this.itemsList);
     }
   }
 
@@ -90,6 +93,8 @@ export class HomePageComponent implements OnInit {
         break;
       }
     }
+
+
     let userObj = JSON.parse(localStorage.getItem("currUser") as string);
     userObj.shoppingTodoList = this.shoppingList;
     localStorage.setItem(userObj.name,JSON.stringify(userObj));
@@ -106,6 +111,7 @@ export class HomePageComponent implements OnInit {
         break;
       }
     }
+    
     let userObj = JSON.parse(localStorage.getItem("currUser") as string);
     userObj.generalTodoList = this.itemsList;
     localStorage.setItem(userObj.name,JSON.stringify(userObj));
@@ -116,5 +122,12 @@ export class HomePageComponent implements OnInit {
     
   }
 
+  onLogout(){
+    let currUser = this.auth.getCurrUser();
+    currUser = null;
+    this.auth.setCurrUser(currUser);
+    this.router.navigate(["/login"]);
+  }
+    
   ngOnInit(): void {}
 }

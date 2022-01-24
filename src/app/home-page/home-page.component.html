@@ -11,7 +11,7 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onLogout()">Logout</button>
       </form>
     </div>
   </nav>
@@ -26,7 +26,7 @@
 
   <div *ngIf="isGeneralActive">
     <div class="row">
-        <div class="cards col" *ngFor="let x of itemsList">
+        <div class="cards col-sm-3" *ngFor="let x of itemsList">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title">{{x.title}}</h5>

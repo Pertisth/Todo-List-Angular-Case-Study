@@ -106,3 +106,9 @@ img{
   h2{
       text-align: center;
   }
+  .disabled{
+      visibility: hidden;
+  }
+  .has-errors{
+      
+  }

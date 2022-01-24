@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,FormGroup } from '@angular/forms';
+import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Items } from '../Items/items';
@@ -13,14 +13,22 @@ import { Users } from '../Users/users';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    username : new FormControl(),
-    password : new FormControl()
+    username : new FormControl("",[
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(15)
+    ]),
+    password : new FormControl("",[
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(12)
+    ])
   });
 
   onSubmit(){
     let username : string = this.loginForm.value.username;
     let password :  string = this.loginForm.value.password;
-
+    console.log(this.loginForm.status);
     if(this.isValidUser(username,password) === true)
     {
       console.log("Correct");
@@ -53,6 +61,10 @@ export class LoginComponent implements OnInit {
   constructor(private auth : AuthService,private router : Router) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChange():void{
+
   }
 
 }

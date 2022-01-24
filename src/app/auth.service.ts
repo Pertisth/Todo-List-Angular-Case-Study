@@ -23,6 +23,14 @@ export class AuthService {
     return localStorage.getItem(username);
   }
 
+  getCurrUser(){
+    return JSON.parse(localStorage.getItem("currUser") as string);
+  }
+
+  setCurrUser(currUser : string){
+    localStorage.setItem("currUser",currUser);
+  }
+
   constructor() { 
 
   }
